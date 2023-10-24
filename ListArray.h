@@ -3,6 +3,8 @@
 
 #include "List.h"
 
+using namespace std;
+
 template <typename T>
 class ListArray : public List<T> {
 
@@ -15,14 +17,16 @@ class ListArray : public List<T> {
 	            void resize(int new_size);
 
 	        public:
+
 	        ListArray();
 
 	        ~ListArray(){
 				delete[] arr;
 			};
 
+
 	        T operator[](int pos){
-				if(pos < 0 || pos > max) {
+				if(pos < 0 || pos >= n) {
 				            throw std::out_of_range("Posición inválida");
 					        }
 			        else{
@@ -38,12 +42,19 @@ class ListArray : public List<T> {
 			};
 
 	        void insert(int pos, T e) override{
-				if(pos < 0 || pos > max) {
+				if(pos < 0 || pos > n) {
 				            throw std::out_of_range("Posición inválida");
 					        }
 			        else{
-					            arr[pos] = e;
-						        }
+			            if(n == max){
+							resize(max*2);
+						}
+						for(int i = n; i > pos; i--){
+					      arr[i] = arr[i-1];
+					      }
+		n++;
+		arr[pos] = e;
+					}
 			}
             
 			void append(T e) override{
@@ -65,7 +76,7 @@ class ListArray : public List<T> {
 			}
 
 	        T remove(int pos) override{
-				if(pos < 0 || pos > max) {
+				if(pos < 0 || pos > n) {
 				            throw std::out_of_range("Posición inválida");
 					        }
 			        else{
@@ -79,7 +90,7 @@ class ListArray : public List<T> {
 			}
 
 	        T get(int pos) override{
-				if(pos < 0 || pos > max) {
+				if(pos < 0 || pos >= max) {
 				            throw std::out_of_range("Posición inválida");
 					        }
 			        else{
