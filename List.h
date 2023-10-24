@@ -1,3 +1,5 @@
+//Clase pura y genérica
+
 #ifndef LIST_H
 #define LIST_H
 
