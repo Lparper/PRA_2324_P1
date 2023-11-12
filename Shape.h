@@ -9,31 +9,13 @@ class Shape{
 		std::string color;
 
 	public:
-		Shape(){
-		color = "red";
-		}
+		Shape();
 
-		Shape(std::string color){
+		Shape(std::string color);
 
-		if(color != "red" || color != "green" || color != "blue")
-			throw std::invalid_argument("el color es incorrecto");
-		
-		else
-			this->color = color;
-		}
+		std::string get_color() const;
 
-		std::string get_color() const{
-		return color;
-		}
-
-		void set_color(std::string c){
-		
-		if(color != "red" || color != "green" || color != "blue")
-			throw std::invalid_argument("El color es incorrecto");
-		
-		else
-			color=c;
-		}
+		void set_color(std::string c);
 
 		virtual double area() const = 0;
 
