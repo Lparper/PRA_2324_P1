@@ -12,9 +12,12 @@ class Point2D{
 
 		//Métodos
 		
-		Point2D(double x=0, double y=0);
+		Point2D(double x, double y){
+			this->x = x;
+			this->y = y;
+		}
 
-		friend double distance(const Point2D &a, const Point2D &b){
+		static double distance(const Point2D &a, const Point2D &b){
 			double d = sqrt(pow((a.x)-(b.x), 2) + pow((a.y)-(b.y), 2));
 			return d;
 		}
