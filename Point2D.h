@@ -12,35 +12,17 @@ class Point2D{
 
 		//Métodos
 		
-		Point2D(double x, double y){
-			this->x = x;
-			this->y = y;
-		}
+		Point2D();
 
-		static double distance(const Point2D &a, const Point2D &b){
-			double d = sqrt(pow((a.x)-(b.x), 2) + pow((a.y)-(b.y), 2));
-			return d;
-		}
+		Point2D(double x, double y);
 
-		friend bool operator==(const Point2D &a, const Point2D &b){
-			if((a.x)==(b.x) && (a.y)==(b.y))
-				return true;
-			else
-				return false;
-		}
+		static double distance(const Point2D &a, const Point2D &b);
 
-		friend bool operator!=(const Point2D &a, const Point2D &b){
-			if((a.x)==(b.x) && (a.y)==(b.y))
-				return false;
-			else
-				return true;
-		}
+		friend bool operator==(const Point2D &a, const Point2D &b);
 
-		friend std::ostream& operator<<( std::ostream &out, const Point2D &p){
-			
-			return out << "(" << p.x << " , " << p.y << ")";
-		
-		}
+		friend bool operator!=(const Point2D &a, const Point2D &b);
+
+		friend std::ostream& operator<<( std::ostream &out, const Point2D &p);
 
 };
 	    

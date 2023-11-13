@@ -24,3 +24,4 @@ void Shape:: set_color(std::string c){
 		else
 			color=c;
 		}
+
