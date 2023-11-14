@@ -31,15 +31,15 @@ std::ostream& operator<<(std::ostream &out, const Circle &c){
     return out;
 }
 
-virtual double Circle::area() const override{
+double Circle::area() const {
     return 3.1416 * radius * radius;
 }
 
-virtual double Circle::perimeter() const override{
+double Circle::perimeter() const {
     return 2 * 3.1416 * radius;
 }
 
-virtual void Circle::translate(double incX, double incY) override{
+void Circle::translate(double incX, double incY){
     center.set_x(center.get_x() + incX);
     center.set_y(center.get_y() + incY);
 }
