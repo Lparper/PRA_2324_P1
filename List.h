@@ -16,6 +16,7 @@ class List {
 	   virtual bool empty() = 0;
 	   virtual int size() = 0;
         // ... aquí los métodos virtuales puros
+		virtual void invert_list() = 0;
 };
 
 #endif

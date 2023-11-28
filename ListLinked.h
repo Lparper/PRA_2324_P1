@@ -163,5 +163,20 @@ public:
   virtual int size() override{
     return n;
   }
+
+  virtual void invert_list() override{
+    Node<T>* aux = first;
+    Node<T>* aux2 = nullptr;
+    Node<T>* aux3 = nullptr;
+    while(aux != nullptr){
+      aux3 = aux->next;
+      aux->next = aux2;
+      aux2 = aux;
+      aux = aux3;
+    }
+    first = aux2;
+  }
+
+  
   
 };

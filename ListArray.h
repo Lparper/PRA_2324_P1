@@ -145,6 +145,14 @@ arr[0] = e;
   virtual int size() override{
       return n;
     }
+
+  virtual void invert_list() override{
+      T aux;
+      for(int i = 0; i < n/2; i++){
+                aux = arr[i]; 
+                arr[i] = arr[n-i-1];
+                arr[n-i-1] = aux;
+      }
    
     // miembros públicos, incluidos los heredados de List<T>
   };
