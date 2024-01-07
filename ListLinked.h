@@ -103,7 +103,7 @@ public:
   virtual   T remove(int pos) override{
     Node<T>* aux = first;
     Node<T>* elim;
-    T borr;
+    int borr;
     if(pos > size()-1|| pos < 0){
       throw std::out_of_range("Número fuera de rango del array");
     }
