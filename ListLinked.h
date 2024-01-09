@@ -61,20 +61,20 @@ public:
     }
   
   
-  virtual void append(T e) override{
+    virtual void append(T e) override{
     if (first == nullptr)
       prepend(e);
     else{
       
-      Node<T> * act = first;
+      Node<T> * act = first;//puntero q apunta al first
       for(int i = 1; i< size(); i++){	 
-	act = act->next;	
-      }
-      Node<T>* aux = new Node<T>(e , act->next);
-      act->next = aux;
+	act = act->next;	//ahora el puntero apunta al sigueinte de fisrt, y despues al siguiente del sigueinte es como un act++ todo el rato
+      }//llegas hasta el PENULTIMO
+      Node<T>* aux = new Node<T>(e , act->next);//  crear un nuevo nodo con el valor e y apuntar al siguiente nodo del actual
+      act->next = aux;// Actualizar el puntero next del último nodo para que apunte al nuevo nodo
       
     }
-    n++;
+    n++;//aumentas contador
   }
   
   virtual void insert(int pos, T e) override{
@@ -100,29 +100,31 @@ public:
   }
   
   
-  virtual   T remove(int pos) override{
-    if (pos < 0 || pos >= n) { throw out_of_range("Posición no válida del array\n"); }
-      else{
-              T x;
-            if(pos == 0){
-               Node<T>* aux = first;
-               x = aux->data;
-               first = first->next;
-               delete aux;
-      }else{
-             Node<T>* aux = first->next;															                        Node<T>* prev = first;
-																				                    for(int i = 1; i < pos; i++){
-																				                            aux = aux->next;
-																				                            prev = prev->next;
-																				                        } 
-		 x = aux->data;
-																					                    prev->next = aux->next;
-																				                        delete aux;
-	 } 
-         n--;
-         return x;
-         }
-  } 
+   T remove(int pos) override{
+            if (pos < 0 || pos >= n) { throw std:: out_of_range("Posición no válida del array\n"); }
+            else{
+                T x;
+                if(pos == 0){
+                    Node<T>* aux = first;
+                    x = aux->data;
+                    first = first->next;
+                    delete aux;
+                }else{
+                    Node<T>* aux = first->next;
+                    Node<T>* prev = first;
+                    for(int i = 1; i < pos; i++){
+                        aux = aux->next;
+                        prev = prev->next;
+                    } 
+                    x = aux->data;
+                    prev->next = aux->next;
+                    delete aux;
+                } 
+                n--;
+                return x;
+            } 
+        } 
+
 
   virtual T get(int pos) override{
     if(pos > size()-1 || pos < 0){
